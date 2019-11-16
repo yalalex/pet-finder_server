@@ -1,6 +1,2 @@
 node_modules/
-
-*.json
-
-!package.json
-!package-lock.json
+config/default.json
