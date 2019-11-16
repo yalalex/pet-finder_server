@@ -1,32 +1,139 @@
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
+const { check, validationResult } = require('express-validator');
+
+const User = require('../models/User');
+const Ad = require('../models/Ad');
 
 // @route     GET api/ads
 // @desc      Get all ads
 // @ access   Public
-router.get('/', (req, res) => {
-  res.send('Get all ads');
+router.get('/', async (req, res) => {
+  try {
+    const ads = await Ad.find().sort({ date: -1 });
+    res.json(ads);
+  } catch (err) {
+    console.error(err.message);
+    res.status.send('Server Error');
+  }
+});
+
+// @route     GET api/ads/:id
+// @desc      Get user ads
+// @ access   Private
+router.get('/user', auth, async (req, res) => {
+  try {
+    const ads = await Ad.find({ user: req.user.id }).sort({ date: -1 });
+    res.json(ads);
+  } catch (err) {
+    console.error(err.message);
+    res.status.send('Server Error');
+  }
 });
 
 // @route     POST api/ads/
 // @desc      Add new ad
 // @ access   Private
-router.post('/', (req, res) => {
-  res.send('Add ad');
-});
+router.post(
+  '/',
+  [
+    auth,
+    [
+      check('address', 'Address is required')
+        .not()
+        .isEmpty(),
+      check('phone', 'Phone is required').isMobilePhone()
+    ]
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array()
+      });
+    }
+
+    const { type, pet, address, photo, phone } = req.body;
+
+    try {
+      const newAd = new Ad({
+        type,
+        pet,
+        address,
+        phone,
+        photo,
+        user: req.user.id
+      });
+
+      const ad = await newAd.save();
+
+      res.json(ad);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
 
 // @route     PUT api/ads/:id
 // @desc      Update ad
 // @ access   Private
-router.put('/:id', (req, res) => {
-  res.send('Update ad');
+router.put('/:id', auth, async (req, res) => {
+  const { type, pet, address, phone, photo } = req.body;
+
+  //Build ad object
+  const adFields = {};
+  if (type) adFields.type = type;
+  if (pet) adFields.pet = pet;
+  if (address) adFields.address = address;
+  if (phone) adFields.phone = phone;
+  if (photo) adFields.photo = photo;
+
+  try {
+    let ad = await Ad.findById(req.params.id);
+
+    if (!ad) return res.status(404).json({ msg: 'Ad not found' });
+
+    //Make sure user owns ad
+    if (ad.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized' });
+    }
+
+    ad = await Ad.findByIdAndUpdate(
+      req.params.id,
+      { $set: adFields },
+      { new: true }
+    );
+
+    res.json(ad);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 });
 
 // @route     DELETE api/ads/:id
 // @desc      Delete ad
 // @ access   Private
-router.delete('/:id', (req, res) => {
-  res.send('Delete ad');
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    let ad = await Ad.findById(req.params.id);
+
+    if (!ad) return res.status(404).json({ msg: 'Ad not found' });
+
+    //Make sure user owns ad
+    if (ad.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized' });
+    }
+
+    await Ad.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Ad removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 });
 
 module.exports = router;
