@@ -7,6 +7,7 @@ const AdSchema = mongoose.Schema({
   },
   type: {
     type: String,
+    default: 'lost',
     required: true
   },
   pet: {
@@ -23,6 +24,9 @@ const AdSchema = mongoose.Schema({
   phone: {
     type: String,
     required: true
+  },
+  description: {
+    type: String
   },
   date: {
     type: Date,
