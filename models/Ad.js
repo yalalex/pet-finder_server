@@ -28,6 +28,9 @@ const AdSchema = mongoose.Schema({
   description: {
     type: String
   },
+  coords: {
+    type: Object
+  },
   date: {
     type: Date,
     default: Date.now

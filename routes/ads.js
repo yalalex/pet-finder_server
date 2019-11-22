@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route     GET api/ads/:id
+// @route     GET api/ads/user
 // @desc      Get user ads
 // @ access   Private
 router.get('/user', auth, async (req, res) => {
@@ -57,7 +57,20 @@ router.post(
       });
     }
 
-    const { type, pet, address, photo, phone, description } = req.body;
+    const { type, pet, address, photo, phone, description, coords } = req.body;
+
+    // try {
+    //   const geoCoder = await fetch(
+    //     `https://eu1.locationiq.com/v1/search.php?key=XXX&q=${address}+Minsk+Belarus&format=json`
+    //   );
+    //   const geo = await geoCoder.json();
+    //   const lat = geo.data[0].lat;
+    //   const lon = geo.data[0].lon;
+    //   console.log(lat, lon);
+    // } catch (error) {
+    //   console.error(error.message);
+    //   res.status(500).send('Server error');
+    // }
 
     try {
       const newAd = new Ad({
@@ -67,6 +80,7 @@ router.post(
         phone,
         photo,
         description,
+        coords,
         user: req.user.id
       });
 
@@ -84,7 +98,7 @@ router.post(
 // @desc      Update ad
 // @ access   Private
 router.put('/:id', auth, async (req, res) => {
-  const { type, pet, address, phone, photo, description } = req.body;
+  const { type, pet, address, phone, photo, description, coords } = req.body;
 
   //Build ad object
   const adFields = {};
@@ -94,6 +108,7 @@ router.put('/:id', auth, async (req, res) => {
   if (phone) adFields.phone = phone;
   if (photo) adFields.photo = photo;
   if (description) adFields.description = description;
+  if (coords) adFields.coords = coords;
 
   try {
     let ad = await Ad.findById(req.params.id);
