@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://Alex:ebalovo87@petfinder-zwwb8.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "hopeitworks"
+}
