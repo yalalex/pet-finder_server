@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import { showMarkedAd } from '../../actions/adActions';
 
 const AdMark = ({ ad, showMarkedAd }) => {
-  return (
+  return ad.coords ? (
     <Placemark
-      defaultGeometry={[53.9, 27.55]}
-      // defaultGeometry={[ad.coords.lon, ad.coords.lat]}
+      defaultGeometry={[ad.coords.lat, ad.coords.lon]}
       onClick={() => showMarkedAd(ad._id)}
     />
-  );
+  ) : null;
 };
 
 export default connect(null, { showMarkedAd })(AdMark);
