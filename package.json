@@ -1,7 +1,7 @@
 {
   "name": "pet-finder",
   "version": "1.0.0",
-  "description": "Pet finder app",
+  "description": "Pet Finder App",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
