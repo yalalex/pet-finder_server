@@ -1,4 +1,0 @@
-{
-  "mongoURI": "mongodb+srv://user:whatever@petfinder-zwwb8.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "guesswhat"
-}
