@@ -1,1 +1,1 @@
-Express server for Pet Finder application. Client side is in developement.
+MERN stack application on finding lost pets in Minsk/
