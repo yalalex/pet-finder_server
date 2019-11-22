@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
+const fetch = require('node-fetch');
 
 const User = require('../models/User');
 const Ad = require('../models/Ad');
