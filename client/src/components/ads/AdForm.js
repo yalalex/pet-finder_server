@@ -27,8 +27,8 @@ const AdForm = ({
         address: '',
         photo: '',
         phone: '',
-        description: ''
-        // coords: {}
+        description: '',
+        coords: {}
       });
     }
   }, [current]);
@@ -39,8 +39,8 @@ const AdForm = ({
     address: '',
     photo: '',
     phone: '',
-    description: ''
-    // coords: {}
+    description: '',
+    coords: {}
   });
 
   const { _id, type, pet, address, photo, phone, description } = ad;

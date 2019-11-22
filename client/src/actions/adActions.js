@@ -35,19 +35,21 @@ export const getAds = () => async dispatch => {
 
 // Add AD
 export const addAd = ad => async dispatch => {
-  // try {
-  //   const geoCoder = await axios.get(
-  //     `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${ad.address}+Minsk+Belarus&format=json`
-  //   );
-  //   ad.coords.lat = geoCoder.data[0].lat;
-  //   ad.coords.lon = geoCoder.data[0].lon;
-  //   console.log(ad);
-  // } catch {
-  //   dispatch({
-  //     type: AD_ERROR,
-  //     payload: 'Check address format'
-  //   });
-  // }
+  try {
+    const geoCoder = await axios.get(
+      `https://geocode-maps.yandex.ru/1.x?geocode=${ad.address}+Minsk,+Belarus&apikey=42fae72b-9e77-4e29-9f6e-97bc8568ba6b`
+    );
+    console.log(geoCoder);
+    // ad.coords.lat = geoCoder.data[0].lat;
+    // ad.coords.lon = geoCoder.data[0].lon;
+    // console.log(ad);
+  } catch {
+    dispatch({
+      type: AD_ERROR,
+      payload: 'Check address format'
+    });
+  }
+
   const config = {
     headers: {
       'Content-Type': 'application/json'

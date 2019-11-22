@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
-const fetch = require('node-fetch');
 
 const User = require('../models/User');
 const Ad = require('../models/Ad');
@@ -58,22 +57,7 @@ router.post(
       });
     }
 
-    const { type, pet, address, photo, phone, description } = req.body;
-
-    try {
-      await fetch(
-        `https://eu1.locationiq.com/v1/search.php?key=62c578d5c7451a&q=${address}+Minsk+Belarus&format=json`
-      )
-        .then(resp => resp.json())
-        .then(console.log(json));
-      // const geo = await geoCoder.json();
-      // const lat = geo.data[0].lat;
-      // const lon = geo.data[0].lon;
-      // console.log(lat, lon);
-    } catch (error) {
-      console.error(error.message);
-      res.status(500).send(error.message);
-    }
+    const { type, pet, address, photo, phone, description, coords } = req.body;
 
     try {
       const newAd = new Ad({
@@ -83,7 +67,7 @@ router.post(
         phone,
         photo,
         description,
-        coords: { lat, lon },
+        coords,
         user: req.user.id
       });
 
