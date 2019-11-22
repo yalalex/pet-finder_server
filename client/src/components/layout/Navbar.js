@@ -30,7 +30,7 @@ const Navbar = ({
 
   const guestLinks = (
     <Fragment>
-      <li>
+      <li className='hide-on-small-and-down'>
         <Link to='/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
       </li>
       <li>
@@ -46,7 +46,9 @@ const Navbar = ({
     <nav>
       <div className='nav-wrapper blue'>
         <span className='brand-logo left' style={{ marginLeft: '1rem' }}>
-          <i className='large material-icons'>pets</i>
+          <Link to='/home'>
+            <i className='large material-icons'>pets</i>
+          </Link>
         </span>
         <ul id='nav-mobile' className='right'>
           {isAuthenticated ? authLinks : guestLinks}
