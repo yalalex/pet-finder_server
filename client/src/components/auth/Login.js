@@ -12,7 +12,7 @@ const Login = ({
 }) => {
   useEffect(() => {
     if (isAuthenticated) {
-      history.push('/pet-finder/home');
+      history.push('/home');
     }
 
     if (error === 'Invalid credentials') {

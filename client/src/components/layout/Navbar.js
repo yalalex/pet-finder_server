@@ -18,10 +18,10 @@ const Navbar = ({
   const authLinks = (
     <Fragment>
       <li>
-        <Link to='/pet-finder/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
+        <Link to='/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
       </li>
       <li>
-        <a onClick={onLogout} href='/pet-finder/home'>
+        <a onClick={onLogout} href='/home'>
           {lang === 'en' ? 'Log out' : 'Выход'}
         </a>
       </li>
@@ -31,15 +31,13 @@ const Navbar = ({
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to='/pet-finder/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
+        <Link to='/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
       </li>
       <li>
-        <Link to='/pet-finder/register'>
-          {lang === 'en' ? 'Register' : 'Регистрация'}
-        </Link>
+        <Link to='/register'>{lang === 'en' ? 'Register' : 'Регистрация'}</Link>
       </li>
       <li>
-        <Link to='/pet-finder/login'>{lang === 'en' ? 'Log In' : 'Вход'}</Link>
+        <Link to='/login'>{lang === 'en' ? 'Log In' : 'Вход'}</Link>
       </li>
     </Fragment>
   );

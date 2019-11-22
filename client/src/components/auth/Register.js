@@ -12,7 +12,7 @@ const Register = ({
 }) => {
   useEffect(() => {
     if (isAuthenticated) {
-      history.push('/pet-finder/home');
+      history.push('/home');
     }
 
     if (error === 'User already exists') {

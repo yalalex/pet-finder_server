@@ -30,9 +30,9 @@ const App = () => {
           <div className='container'>
             <Alerts />
             <Switch>
-              <Route exact path='/pet-finder/home' component={Home} />
-              <Route exact path='/pet-finder/register' component={Register} />
-              <Route exact path='/pet-finder/login' component={Login} />
+              <Route exact path='/home' component={Home} />
+              <Route exact path='/register' component={Register} />
+              <Route exact path='/login' component={Login} />
             </Switch>
           </div>
         </Fragment>
