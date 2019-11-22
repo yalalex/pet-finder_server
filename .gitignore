@@ -1,6 +1,6 @@
 node_modules/
 /config/production.json
-/config/config.json
+/config/default.json
 
 /client/build
 
