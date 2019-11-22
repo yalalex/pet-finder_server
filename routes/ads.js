@@ -57,20 +57,20 @@ router.post(
       });
     }
 
-    const { type, pet, address, photo, phone, description, coords } = req.body;
+    const { type, pet, address, photo, phone, description } = req.body;
 
-    // try {
-    //   const geoCoder = await fetch(
-    //     `https://eu1.locationiq.com/v1/search.php?key=XXX&q=${address}+Minsk+Belarus&format=json`
-    //   );
-    //   const geo = await geoCoder.json();
-    //   const lat = geo.data[0].lat;
-    //   const lon = geo.data[0].lon;
-    //   console.log(lat, lon);
-    // } catch (error) {
-    //   console.error(error.message);
-    //   res.status(500).send('Server error');
-    // }
+    try {
+      const geoCoder = await fetch(
+        `https://eu1.locationiq.com/v1/search.php?key=62c578d5c7451a&q=${address}+Minsk+Belarus&format=json`
+      );
+      const geo = await geoCoder.json();
+      const lat = geo.data[0].lat;
+      const lon = geo.data[0].lon;
+      console.log(lat, lon);
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).send('Server error');
+    }
 
     try {
       const newAd = new Ad({
@@ -80,7 +80,7 @@ router.post(
         phone,
         photo,
         description,
-        coords,
+        coords: { lat, lon },
         user: req.user.id
       });
 
