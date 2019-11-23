@@ -152,8 +152,8 @@ const AdForm = ({
           <input
             placeholder={
               lang === 'en'
-                ? 'Approximate address where lost/found'
-                : 'Приблизительный адрес пропажи/находки'
+                ? 'City, street, bld, where lost/found'
+                : 'Место пропажи/находки. Город, улица, дом...'
             }
             type='text'
             name='address'

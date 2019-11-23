@@ -17,7 +17,7 @@ const Navbar = ({
 
   const authLinks = (
     <Fragment>
-      <li>
+      <li className='hide-on-small-and-down'>
         <Link to='/'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
       </li>
       <li>
@@ -54,7 +54,7 @@ const Navbar = ({
               style={{ marginLeft: '1rem', marginRight: '1rem' }}
             >
               <span className={lang === 'ru' ? 'white-text' : 'grey-text'}>
-                Ru
+                RU
               </span>
               <label style={{ cursor: 'default' }}>
                 <input type='checkbox' />
@@ -65,7 +65,7 @@ const Navbar = ({
                 ></span>
               </label>
               <span className={lang === 'en' ? 'white-text' : 'grey-text'}>
-                En
+                EN
               </span>
             </div>
           </li>
