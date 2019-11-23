@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
+import Alerts from '../layout/Alerts';
+import { Link } from 'react-router-dom';
 import { setAlert } from '../../actions/alertActions';
 import { login, clearErrors } from '../../actions/authActions';
 import { connect } from 'react-redux';
@@ -12,7 +14,7 @@ const Login = ({
 }) => {
   useEffect(() => {
     if (isAuthenticated) {
-      history.push('/home');
+      history.push('/');
     }
 
     if (error === 'Invalid credentials') {
@@ -44,51 +46,56 @@ const Login = ({
   };
 
   return (
-    <div className='card center card-style' style={{ marginTop: '20%' }}>
-      <div className='card-content'>
-        <span className='card-title'>{lang === 'en' ? 'Log In' : 'Вход'}</span>
-        <div className='row'>
-          <div className='input-field'>
-            <input
-              placeholder='Email'
-              type='email'
-              name='email'
-              value={email}
-              onChange={onChange}
-              required
-            />
+    <Fragment>
+      <Alerts />
+      <div className='card center card-style' style={{ marginTop: '20%' }}>
+        <div className='card-content'>
+          <span className='card-title'>
+            {lang === 'en' ? 'Log In' : 'Вход'}
+          </span>
+          <div className='row'>
+            <div className='input-field'>
+              <input
+                placeholder='Email'
+                type='email'
+                name='email'
+                value={email}
+                onChange={onChange}
+                required
+              />
+            </div>
           </div>
-        </div>
 
-        <div className='row'>
-          <div className='input-field'>
-            <input
-              placeholder={lang === 'en' ? 'Password' : 'Пароль'}
-              type='password'
-              name='password'
-              value={password}
-              onChange={onChange}
-              required
-            />
+          <div className='row'>
+            <div className='input-field'>
+              <input
+                placeholder={lang === 'en' ? 'Password' : 'Пароль'}
+                type='password'
+                name='password'
+                value={password}
+                onChange={onChange}
+                required
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <a
-            href='#!'
-            onClick={onSubmit}
-            className='modal-close waves-effect blue waves-light btn'
-          >
-            {lang === 'en' ? 'Log In' : 'Войти'}
-          </a>
-        </div>
-        <div style={{ marginTop: '2rem' }}>
-          {lang === 'en' ? 'No account? ' : 'Нету аккаунта? '}
-          <a href='/register'>
-            {lang === 'en' ? 'Register' : 'Зарегистрируйтесь'}.
-          </a>
+          <div>
+            <a
+              href='#!'
+              onClick={onSubmit}
+              className='modal-close waves-effect blue waves-light btn'
+            >
+              {lang === 'en' ? 'Log In' : 'Войти'}
+            </a>
+          </div>
+          <div style={{ marginTop: '2rem' }}>
+            {lang === 'en' ? 'No account? ' : 'Нету аккаунта? '}
+            <Link to='/register'>
+              {lang === 'en' ? 'Register' : 'Зарегистрируйтесь'}.
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
 

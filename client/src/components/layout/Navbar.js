@@ -17,11 +17,11 @@ const Navbar = ({
 
   const authLinks = (
     <Fragment>
-      {/* <li>
-        <Link to='/home'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
-      </li> */}
       <li>
-        <a onClick={onLogout} href='/home'>
+        <Link to='/'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
+      </li>
+      <li>
+        <a onClick={onLogout} href='/'>
           {lang === 'en' ? 'Log out' : 'Выход'}
         </a>
       </li>
@@ -30,11 +30,11 @@ const Navbar = ({
 
   const guestLinks = (
     <Fragment>
-      {/* <li className='hide-on-small-and-down'>
-        <Link to='/home'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
-      </li> */}
+      <li className='hide-on-small-and-down'>
+        <Link to='/'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
+      </li>
       <li>
-        <Link to='/login'>{lang === 'en' ? 'Sign In' : 'Вход'}</Link>
+        <Link to='/login'>{lang === 'en' ? 'Log In' : 'Вход'}</Link>
       </li>
     </Fragment>
   );
@@ -43,7 +43,7 @@ const Navbar = ({
     <nav id='top'>
       <div className='nav-wrapper blue'>
         <span className='brand-logo left' style={{ marginLeft: '1rem' }}>
-          <Link to='/home'>
+          <Link to='/'>
             <i className='large material-icons'>pets</i>
           </Link>
         </span>

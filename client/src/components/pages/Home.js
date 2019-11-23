@@ -4,6 +4,7 @@ import Ads from '../ads/Ads';
 import AdForm from '../ads/AdForm';
 import AddBtn from '../ads/AddBtn';
 import AdFilter from '../ads/AdFilter';
+import Alerts from '../layout/Alerts';
 import { loadUser } from '../../actions/authActions';
 import { connect } from 'react-redux';
 
@@ -18,6 +19,7 @@ const Home = ({ loadUser }) => {
         <MapComp />
         <AdForm />
         <AddBtn />
+        <Alerts />
       </div>
       <div className='col l4 m5 s12'>
         <AdFilter />

@@ -1,5 +1,10 @@
-html {
+/* html {
   background-color: #f2f2f2;
+} */
+
+body {
+  background-color: #f2f2f2;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
 }
 
 .card-style {

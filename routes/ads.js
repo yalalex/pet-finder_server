@@ -22,15 +22,15 @@ router.get('/', async (req, res) => {
 // @route     GET api/ads/user
 // @desc      Get user ads
 // @ access   Private
-router.get('/user', auth, async (req, res) => {
-  try {
-    const ads = await Ad.find({ user: req.user.id }).sort({ date: -1 });
-    res.json(ads);
-  } catch (err) {
-    console.error(err.message);
-    res.status.send('Server Error');
-  }
-});
+// router.get('/user', auth, async (req, res) => {
+//   try {
+//     const ads = await Ad.find({ user: req.user.id }).sort({ date: -1 });
+//     res.json(ads);
+//   } catch (err) {
+//     console.error(err.message);
+//     res.status.send('Server Error');
+//   }
+// });
 
 // @route     POST api/ads/
 // @desc      Add new ad
