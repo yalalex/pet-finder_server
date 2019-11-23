@@ -46,7 +46,9 @@ router.post(
       check('address', 'Address is required')
         .not()
         .isEmpty(),
-      check('phone', 'Phone is required').isMobilePhone()
+      check('phone', 'Phone is required')
+        .not()
+        .isEmpty()
     ]
   ],
   async (req, res) => {

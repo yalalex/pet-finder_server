@@ -7,15 +7,17 @@ import {
   hideAdForm
 } from '../../actions/adActions';
 import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alertActions';
 
 const AdForm = ({
-  ads: { current, adForm },
+  ads: { current, adForm, error },
   auth: { lang },
   addAd,
   updateAd,
   clearCurrent,
   deleteAd,
-  hideAdForm
+  hideAdForm,
+  setAlert
 }) => {
   useEffect(() => {
     if (current !== null) {
@@ -49,13 +51,20 @@ const AdForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    if (current === null) {
-      addAd(ad);
-    } else {
-      updateAd(ad);
-    }
-    clearCurrent();
-    hideAdForm();
+    if (error !== null) {
+      if (current === null) {
+        addAd(ad);
+      } else {
+        updateAd(ad);
+      }
+      clearCurrent();
+      hideAdForm();
+    } else
+      setAlert(
+        lang === 'en'
+          ? 'Enter all required fileds'
+          : 'Заполните необходимые поля'
+      );
   };
 
   const clearAll = () => {
@@ -124,9 +133,7 @@ const AdForm = ({
         <div className='input-field'>
           <input
             placeholder={
-              lang === 'en'
-                ? 'Pet type (dog/cat/...)'
-                : 'Вид животного (собака/кот/...)'
+              lang === 'en' ? 'Dog/cat/bird...' : 'Собака/кот/птица...'
             }
             type='text'
             name='pet'
@@ -135,7 +142,7 @@ const AdForm = ({
             required
           />
           <label htmlFor='pet' className='active'>
-            {lang === 'en' ? 'Pet type' : 'Вид животного'}
+            {lang === 'en' ? 'Pet type*' : 'Вид животного*'}
           </label>
         </div>
       </div>
@@ -155,7 +162,7 @@ const AdForm = ({
             required
           />
           <label htmlFor='address' className='active'>
-            {lang === 'en' ? 'Address' : 'Адрес'}
+            {lang === 'en' ? 'Address*' : 'Адрес*'}
           </label>
         </div>
       </div>
@@ -164,7 +171,9 @@ const AdForm = ({
         <div className='input-field'>
           <input
             placeholder={
-              lang === 'en' ? 'Your phone number' : 'Ваш контактный номер'
+              lang === 'en'
+                ? 'Phone/email/facebook...'
+                : 'Телефон/email/facebook...'
             }
             type='text'
             name='phone'
@@ -173,7 +182,7 @@ const AdForm = ({
             required
           />
           <label htmlFor='phone' className='active'>
-            {lang === 'en' ? 'Phone' : 'Телефон'}
+            {lang === 'en' ? 'Your contacts*' : 'Ваши контакты*'}
           </label>
         </div>
       </div>
@@ -217,8 +226,7 @@ const AdForm = ({
       </div>
 
       <div className='center'>
-        <a
-          href='#top'
+        <div
           onClick={onSubmit}
           className='waves-effect waves-light btn-small green'
           style={{ margin: '0.2rem' }}
@@ -230,7 +238,7 @@ const AdForm = ({
             : lang === 'en'
             ? 'Post'
             : 'Разместить'}
-        </a>
+        </div>
         <a
           href='#!'
           onClick={closeAdForm}
@@ -274,5 +282,6 @@ export default connect(mapStateToProps, {
   updateAd,
   clearCurrent,
   deleteAd,
-  hideAdForm
+  hideAdForm,
+  setAlert
 })(AdForm);
