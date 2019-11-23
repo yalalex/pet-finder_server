@@ -37,7 +37,7 @@ const AdItem = ({
             alt=''
             className='materialboxed responsive-img'
           />
-          <span className='card-title'>
+          <span className='card-title red-text'>
             {lang === 'en'
               ? type.toUpperCase()
               : type === 'lost'

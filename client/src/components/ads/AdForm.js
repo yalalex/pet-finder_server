@@ -51,7 +51,13 @@ const AdForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    if (error !== null) {
+    if (type === '' || pet === '' || address === '' || phone === '') {
+      setAlert(
+        lang === 'en'
+          ? 'Enter all required fileds'
+          : 'Заполните необходимые поля'
+      );
+    } else {
       if (current === null) {
         addAd(ad);
       } else {
@@ -59,12 +65,7 @@ const AdForm = ({
       }
       clearCurrent();
       hideAdForm();
-    } else
-      setAlert(
-        lang === 'en'
-          ? 'Enter all required fileds'
-          : 'Заполните необходимые поля'
-      );
+    }
   };
 
   const clearAll = () => {
