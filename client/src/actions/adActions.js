@@ -91,7 +91,7 @@ export const deleteAd = id => async dispatch => {
 export const updateAd = ad => async dispatch => {
   try {
     const geoCoder = await fetch(
-      `https://eu1.locationiq.com/v1/search.php?key=62c578d5c7451a&q=${ad.address}+Belarus&format=json`
+      `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${ad.address}+Belarus&format=json`
     );
     const geo = await geoCoder.json();
     ad.coords.lat = geo[0].lat;
@@ -163,6 +163,7 @@ export const showMarkedAd = id => {
   return { type: SHOW_MARKED_AD, payload: id };
 };
 
+//Clear Ad Selections
 export const clearFilter = () => {
   return { type: CLEAR_FILTER };
 };
