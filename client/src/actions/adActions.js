@@ -99,7 +99,7 @@ export const updateAd = ad => async dispatch => {
   } catch (err) {
     dispatch({
       type: AD_ERROR,
-      payload: 'Please enter valid address'
+      payload: 'Please enter valid address (City, street, building)'
     });
   }
   const config = {
