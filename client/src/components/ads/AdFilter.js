@@ -10,7 +10,7 @@ const AdFilter = ({
 }) => {
   return (
     <div
-      className='row center'
+      className='row center sticky-filter'
       style={{
         marginTop: '0.5rem'
       }}

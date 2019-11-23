@@ -75,9 +75,10 @@ const AdForm = ({
 
   return adForm ? (
     <div
-      className='card-style'
+      className='ad-form card-style'
       style={{
-        padding: '2rem'
+        padding: '2rem',
+        margin: '1rem'
       }}
       id='ad-form'
     >
@@ -217,7 +218,7 @@ const AdForm = ({
 
       <div className='center'>
         <a
-          href='#!'
+          href='#top'
           onClick={onSubmit}
           className='waves-effect waves-light btn-small green'
           style={{ margin: '0.2rem' }}
@@ -249,7 +250,7 @@ const AdForm = ({
               {lang === 'en' ? 'Clear' : 'Очистить'}
             </a>
             <a
-              href='#!'
+              href='#top'
               onClick={onDelete}
               className='waves-effect waves-light btn-small red'
               style={{ margin: '0.2rem' }}

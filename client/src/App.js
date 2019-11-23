@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Alerts from './components/layout/Alerts';
 import Navbar from './components/layout/Navbar';
+import Up from './components/layout/Up';
 import Home from './components/pages/Home';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -35,6 +36,7 @@ const App = () => {
               <Route exact path='/login' component={Login} />
             </Switch>
           </div>
+          <Up />
         </Fragment>
       </Router>
     </Provider>

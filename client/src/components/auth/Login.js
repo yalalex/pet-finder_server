@@ -44,7 +44,7 @@ const Login = ({
   };
 
   return (
-    <div className='card center card-style' style={{ margin: '20%' }}>
+    <div className='card center card-style' style={{ marginTop: '20%' }}>
       <div className='card-content'>
         <span className='card-title'>{lang === 'en' ? 'Log In' : 'Вход'}</span>
         <div className='row'>
@@ -79,6 +79,12 @@ const Login = ({
             className='modal-close waves-effect blue waves-light btn'
           >
             {lang === 'en' ? 'Log In' : 'Войти'}
+          </a>
+        </div>
+        <div style={{ marginTop: '2rem' }}>
+          {lang === 'en' ? 'No account? ' : 'Нету аккаунта? '}
+          <a href='/register'>
+            {lang === 'en' ? 'Register' : 'Зарегистрируйтесь'}.
           </a>
         </div>
       </div>

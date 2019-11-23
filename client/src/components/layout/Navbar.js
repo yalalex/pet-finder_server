@@ -17,9 +17,9 @@ const Navbar = ({
 
   const authLinks = (
     <Fragment>
-      <li>
-        <Link to='/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
-      </li>
+      {/* <li>
+        <Link to='/home'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
+      </li> */}
       <li>
         <a onClick={onLogout} href='/home'>
           {lang === 'en' ? 'Log out' : 'Выход'}
@@ -30,20 +30,17 @@ const Navbar = ({
 
   const guestLinks = (
     <Fragment>
-      <li className='hide-on-small-and-down'>
-        <Link to='/home'>{lang === 'en' ? 'Home' : 'Домой'}</Link>
-      </li>
+      {/* <li className='hide-on-small-and-down'>
+        <Link to='/home'>{lang === 'en' ? 'Home' : 'Главная'}</Link>
+      </li> */}
       <li>
-        <Link to='/register'>{lang === 'en' ? 'Register' : 'Регистрация'}</Link>
-      </li>
-      <li>
-        <Link to='/login'>{lang === 'en' ? 'Log In' : 'Вход'}</Link>
+        <Link to='/login'>{lang === 'en' ? 'Sign In' : 'Вход'}</Link>
       </li>
     </Fragment>
   );
 
   return (
-    <nav>
+    <nav id='top'>
       <div className='nav-wrapper blue'>
         <span className='brand-logo left' style={{ marginLeft: '1rem' }}>
           <Link to='/home'>
@@ -51,15 +48,13 @@ const Navbar = ({
           </Link>
         </span>
         <ul id='nav-mobile' className='right'>
-          {isAuthenticated ? authLinks : guestLinks}
-
           <li>
             <div
               className='switch'
               style={{ marginLeft: '1rem', marginRight: '1rem' }}
             >
               <span className={lang === 'ru' ? 'white-text' : 'grey-text'}>
-                RU
+                Ru
               </span>
               <label style={{ cursor: 'default' }}>
                 <input type='checkbox' />
@@ -70,10 +65,11 @@ const Navbar = ({
                 ></span>
               </label>
               <span className={lang === 'en' ? 'white-text' : 'grey-text'}>
-                EN
+                En
               </span>
             </div>
           </li>
+          {isAuthenticated ? authLinks : guestLinks}
         </ul>
       </div>
     </nav>

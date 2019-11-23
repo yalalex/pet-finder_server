@@ -14,7 +14,7 @@ const Home = ({ loadUser }) => {
   }, []);
   return (
     <div className='col s12 row'>
-      <div className='col l8 m7 s12'>
+      <div className='col l8 m7 s12 sticky-map map-container'>
         <MapComp />
         <AdForm />
         <AddBtn />

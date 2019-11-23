@@ -4,7 +4,7 @@ import AdMark from './AdMark';
 import { getAds } from '../../actions/adActions';
 import { connect } from 'react-redux';
 
-const MapComp = ({ ads: { ads, filtered }, getAds }) => {
+const MapComp = ({ ads: { ads, filtered, adForm }, getAds }) => {
   useEffect(() => {
     getAds();
     // eslint-disable-next-line
@@ -12,11 +12,11 @@ const MapComp = ({ ads: { ads, filtered }, getAds }) => {
 
   return (
     <YMaps>
-      <div style={{ height: '400px', margin: '1rem' }}>
+      <div className='map' style={{ display: adForm ? 'none' : 'block' }}>
         <Map
           defaultState={{
             center: [53.9, 27.55],
-            zoom: 11
+            zoom: 6
           }}
           width='100%'
           height='100%'

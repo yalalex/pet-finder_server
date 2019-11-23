@@ -145,12 +145,11 @@ export const showUserAds = id => {
   return { type: USER_ADS, payload: id };
 };
 
-// Clear Filter
-export const clearFilter = () => {
-  return { type: CLEAR_FILTER };
-};
-
 //Show Ad Selected on Map
 export const showMarkedAd = id => {
   return { type: SHOW_MARKED_AD, payload: id };
+};
+
+export const clearFilter = () => {
+  return { type: CLEAR_FILTER };
 };
