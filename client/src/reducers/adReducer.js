@@ -69,16 +69,6 @@ export default (state = initialState, action) => {
         ...state,
         current: null
       };
-    // case LOST_ADS:
-    //   return {
-    //     ...state,
-    //     filtered: state.ads.filter(ad => ad.type.match('lost'))
-    //   };
-    // case FOUND_ADS:
-    //   return {
-    //     ...state,
-    //     filtered: state.ads.filter(ad => ad.type.match('found'))
-    //   };
     case USER_ADS:
       return {
         ...state,

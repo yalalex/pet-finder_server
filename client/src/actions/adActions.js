@@ -123,7 +123,7 @@ export const updateAd = ad => async dispatch => {
   }
 };
 
-// Clear ADs
+// Clear ADs From State
 export const clearAds = () => {
   return { type: CLEAR_ADS };
 };
@@ -138,12 +138,12 @@ export const clearCurrent = () => {
   return { type: CLEAR_CURRENT };
 };
 
-//Show AD form below map
+//Show AD Form
 export const showAdForm = () => {
   return { type: SHOW_AD_FORM };
 };
 
-//Hide AD form below map
+//Hide AD Form
 export const hideAdForm = () => {
   return { type: HIDE_AD_FORM };
 };
@@ -158,12 +158,12 @@ export const showUserAds = id => {
   return { type: USER_ADS, payload: id };
 };
 
-//Show Ad Selected on Map
+//Show AD Selected on Map
 export const showMarkedAd = id => {
   return { type: SHOW_MARKED_AD, payload: id };
 };
 
-//Clear Ad Selections
+//Clear AD Selections
 export const clearFilter = () => {
   return { type: CLEAR_FILTER };
 };
