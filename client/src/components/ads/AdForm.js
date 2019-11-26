@@ -53,7 +53,13 @@ const AdForm = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    if (type === '' || pet === '' || address === '' || phone === '') {
+    if (
+      type === '' ||
+      pet === '' ||
+      city === '' ||
+      address === '' ||
+      phone === ''
+    ) {
       setAlert(
         lang === 'en'
           ? 'Enter all required fileds'
