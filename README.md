@@ -1,1 +1,1 @@
-MERN stack application on finding lost pets in the city of Minsk, Belarus
+Full stack (MERN) web application for advertising lost/found pets in Belarus.
