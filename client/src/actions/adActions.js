@@ -37,7 +37,7 @@ export const getAds = () => async dispatch => {
 export const addAd = ad => async dispatch => {
   try {
     const geoCoder = await fetch(
-      `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${ad.city}+${ad.address}+Belarus&format=json`
+      `https://eu1.locationiq.com/v1/search.php?key=62c578d5c7451a&q=${ad.city}+${ad.address}+Belarus&format=json`
     );
     const geo = await geoCoder.json();
     ad.coords.lat = geo[0].lat;
@@ -91,7 +91,7 @@ export const deleteAd = id => async dispatch => {
 export const updateAd = ad => async dispatch => {
   try {
     const geoCoder = await fetch(
-      `https://eu1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_LOCATIONIQ_KEY}&q=${ad.city}+${ad.address}+Belarus&format=json`
+      `https://eu1.locationiq.com/v1/search.php?key=62c578d5c7451a&q=${ad.city}+${ad.address}+Belarus&format=json`
     );
     const geo = await geoCoder.json();
     ad.coords.lat = geo[0].lat;
