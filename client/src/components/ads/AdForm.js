@@ -30,6 +30,7 @@ const AdForm = ({
         photo: '',
         phone: '',
         description: '',
+        city: '',
         coords: {}
       });
     }
@@ -42,10 +43,11 @@ const AdForm = ({
     photo: '',
     phone: '',
     description: '',
+    city: '',
     coords: {}
   });
 
-  const { _id, type, pet, address, photo, phone, description } = ad;
+  const { _id, type, pet, address, photo, phone, description, city } = ad;
 
   const onChange = e => setAd({ ...ad, [e.target.name]: e.target.value });
 
@@ -143,7 +145,7 @@ const AdForm = ({
             required
           />
           <label htmlFor='pet' className='active'>
-            {lang === 'en' ? 'Pet type*' : 'Вид животного*'}
+            {lang === 'en' ? 'Pet type*:' : 'Вид животного*:'}
           </label>
         </div>
       </div>
@@ -151,20 +153,28 @@ const AdForm = ({
       <div className='row'>
         <div className='input-field'>
           <input
-            placeholder={
-              lang === 'en'
-                ? 'City, street, bld, where lost/found'
-                : 'Место пропажи/находки. Город, улица, дом...'
-            }
+            placeholder={lang === 'en' ? 'City' : 'Город'}
+            type='text'
+            name='city'
+            value={city}
+            onChange={onChange}
+            required
+          />
+          <label htmlFor='city' className='active'>
+            {lang === 'en'
+              ? 'Address where lost/found*:'
+              : 'Адрес пропажи/находки*:'}
+          </label>
+        </div>
+        <div className='input-field'>
+          <input
+            placeholder={lang === 'en' ? 'Street, building' : 'Улица, дом'}
             type='text'
             name='address'
             value={address}
             onChange={onChange}
             required
           />
-          <label htmlFor='address' className='active'>
-            {lang === 'en' ? 'Address*' : 'Адрес*'}
-          </label>
         </div>
       </div>
 
@@ -183,7 +193,7 @@ const AdForm = ({
             required
           />
           <label htmlFor='phone' className='active'>
-            {lang === 'en' ? 'Your contacts*' : 'Ваши контакты*'}
+            {lang === 'en' ? 'Your contacts*:' : 'Ваши контакты*:'}
           </label>
         </div>
       </div>
@@ -202,7 +212,7 @@ const AdForm = ({
             className='materialize-textarea'
           ></textarea>
           <label htmlFor='description' className='active'>
-            {lang === 'en' ? 'Description' : 'Описание'}
+            {lang === 'en' ? 'Description:' : 'Описание:'}
           </label>
         </div>
       </div>
@@ -221,7 +231,7 @@ const AdForm = ({
             onChange={onChange}
           />
           <label htmlFor='photo' className='active'>
-            {lang === 'en' ? 'Photo' : 'Фото'}
+            {lang === 'en' ? 'Photo:' : 'Фото:'}
           </label>
         </div>
       </div>

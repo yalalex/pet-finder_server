@@ -21,7 +21,7 @@ const AdItem = ({
     M.AutoInit();
   });
 
-  const { type, pet, address, phone, photo, description } = ad;
+  const { type, pet, address, phone, photo, description, city } = ad;
 
   const activeAd = ad => {
     setCurrent(ad);
@@ -73,7 +73,11 @@ const AdItem = ({
             {lang === 'en' ? 'Where:' : 'Где:'}
           </div>
           <div className='col s8'>
-            {address.charAt(0).toUpperCase() + address.slice(1)}
+            {city.charAt(0).toUpperCase() +
+              city.slice(1) +
+              ', ' +
+              address.charAt(0).toUpperCase() +
+              address.slice(1)}
           </div>
           <div className='col s4 blue-grey-text'>
             {lang === 'en' ? 'Phone:' : 'Телефон:'}

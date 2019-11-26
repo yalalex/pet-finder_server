@@ -43,6 +43,9 @@ router.post(
       check('pet', 'Pet type is required')
         .not()
         .isEmpty(),
+      check('city', 'City is required')
+        .not()
+        .isEmpty(),
       check('address', 'Address is required')
         .not()
         .isEmpty(),
@@ -59,12 +62,22 @@ router.post(
       });
     }
 
-    const { type, pet, address, photo, phone, description, coords } = req.body;
+    const {
+      type,
+      pet,
+      address,
+      photo,
+      phone,
+      description,
+      coords,
+      city
+    } = req.body;
 
     try {
       const newAd = new Ad({
         type,
         pet,
+        city,
         address,
         phone,
         photo,
@@ -87,12 +100,22 @@ router.post(
 // @desc      Update ad
 // @ access   Private
 router.put('/:id', auth, async (req, res) => {
-  const { type, pet, address, phone, photo, description, coords } = req.body;
+  const {
+    type,
+    pet,
+    address,
+    phone,
+    photo,
+    description,
+    coords,
+    city
+  } = req.body;
 
   //Build ad object
   const adFields = {};
   if (type) adFields.type = type;
   if (pet) adFields.pet = pet;
+  if (city) adFields.city = city;
   if (address) adFields.address = address;
   if (phone) adFields.phone = phone;
   if (photo) adFields.photo = photo;
