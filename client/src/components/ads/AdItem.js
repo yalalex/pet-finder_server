@@ -41,7 +41,7 @@ const AdItem = ({
             {lang === 'en'
               ? type.toUpperCase()
               : type === 'lost'
-              ? 'ПРОПАЛ'
+              ? 'ПОТЕРЯН'
               : 'НАЙДЕН'}
           </span>
           {user !== null && ads.length > 0 && user._id === ad.user && (
