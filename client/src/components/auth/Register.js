@@ -18,7 +18,7 @@ const Register = ({
     }
 
     if (error === 'User already exists') {
-      setAlert(error);
+      setAlert(lang === en ? error : 'Пользователь уже существует');
       clearErrors();
     }
     // eslint-disable-next-line
@@ -38,9 +38,9 @@ const Register = ({
   const onSubmit = e => {
     e.preventDefault();
     if (name === '' || email === '' || password === '') {
-      setAlert('Please enter all fields');
+      setAlert(lang === en ? 'Please enter all fields' : 'Заполните все поля');
     } else if (password !== password2) {
-      setAlert('Passwords do not match');
+      setAlert(lang === en ? 'Passwords do not match' : 'Пароли не совпадают');
     } else {
       register({
         name,

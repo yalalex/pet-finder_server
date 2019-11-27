@@ -63,7 +63,7 @@ const AdForm = ({
       setAlert(
         lang === 'en'
           ? 'Enter all required fileds'
-          : 'Заполните необходимые поля'
+          : 'Заполните все необходимые поля'
       );
     } else {
       if (current === null) {
