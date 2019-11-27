@@ -93,7 +93,7 @@ const AdForm = ({
 
   return adForm ? (
     <div
-      className='ad-form card-style'
+      className='ad-form card-style animated fadeIn'
       style={{
         padding: '2rem',
         margin: '1rem'

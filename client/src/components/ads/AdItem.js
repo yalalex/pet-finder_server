@@ -29,7 +29,7 @@ const AdItem = ({
   };
 
   return (
-    <div className='row'>
+    <div className='row animated fadeIn'>
       <div className='card'>
         <div className='card-image'>
           <img
