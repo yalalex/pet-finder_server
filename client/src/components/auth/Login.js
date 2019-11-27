@@ -18,7 +18,7 @@ const Login = ({
     }
 
     if (error === 'Invalid credentials') {
-      setAlert(lang === en ? error : 'Неверные данные');
+      setAlert(lang === 'en' ? error : 'Неверные данные');
       clearErrors();
     }
     // eslint-disable-next-line
@@ -36,7 +36,9 @@ const Login = ({
   const onSubmit = e => {
     e.preventDefault();
     if (email === '' || password === '') {
-      setAlert(lang === en ? 'Please enter all fields' : 'Заполните все поля');
+      setAlert(
+        lang === 'en' ? 'Please enter all fields' : 'Заполните все поля'
+      );
     } else {
       login({
         email,
