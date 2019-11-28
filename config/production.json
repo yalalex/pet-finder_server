@@ -1,4 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://Alex:itdoesnotmatter@petfinder-zwwb8.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "makeaguess"
+  "mongoURI": "mongodb+srv://Alex:doesitmatter@petfinder-zwwb8.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "guesswhat"
 }
