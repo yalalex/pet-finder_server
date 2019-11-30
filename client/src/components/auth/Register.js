@@ -60,7 +60,7 @@ const Register = ({
       <div
         className='card center card-style'
         style={{
-          margin: '20%'
+          marginTop: '20%'
         }}
       >
         <div className='card-content'>
