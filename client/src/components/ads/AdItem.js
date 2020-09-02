@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import nophoto from '../../images/nophoto.jpg';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import {
   setCurrent,
@@ -21,7 +22,7 @@ const AdItem = ({
     M.AutoInit();
   });
 
-  const { type, pet, address, phone, photo, description, city } = ad;
+  const { type, pet, address, phone, photo, description, city, date } = ad;
 
   const activeAd = ad => {
     setCurrent(ad);
@@ -32,11 +33,7 @@ const AdItem = ({
     <div className='row animated fadeIn'>
       <div className='card'>
         <div className='card-image'>
-          <img
-            src={photo ? photo : nophoto}
-            alt=''
-            className='materialboxed responsive-img'
-          />
+          <img src={photo ? photo : nophoto} alt='' />
           <span className='card-title red-text'>
             {lang === 'en'
               ? type.toUpperCase()
@@ -78,6 +75,13 @@ const AdItem = ({
               ', ' +
               address.charAt(0).toUpperCase() +
               address.slice(1)}
+          </div>
+          <div className='col s4 blue-grey-text'>
+            {lang === 'en' ? 'When:' : 'Когда:'}
+          </div>
+          <div className='col s8'>
+            {lang === 'en' ? moment(date).format('MM/DD/YYYY')
+              : moment(date).format('DD/MM/YYYY')}
           </div>
           <div className='col s4 blue-grey-text'>
             {lang === 'en' ? 'Phone:' : 'Телефон:'}

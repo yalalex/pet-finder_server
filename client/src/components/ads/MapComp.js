@@ -15,8 +15,8 @@ const MapComp = ({ ads: { ads, filtered, adForm }, getAds }) => {
       <div className='map' style={{ display: adForm ? 'none' : 'block' }}>
         <Map
           defaultState={{
-            center: [53.9, 27.55],
-            zoom: 6
+            center: [25, 0],
+            zoom: 2
           }}
           width='100%'
           height='100%'

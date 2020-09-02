@@ -159,7 +159,7 @@ const AdForm = ({
       <div className='row'>
         <div className='input-field'>
           <input
-            placeholder={lang === 'en' ? 'City' : 'Город'}
+            placeholder={lang === 'en' ? 'Country, city' : 'Страна, город'}
             type='text'
             name='city'
             value={city}
