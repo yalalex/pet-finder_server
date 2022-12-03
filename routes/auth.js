@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const config = require('config');
+require('dotenv').config();
 const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
+
+const jwtSecret = process.env.JWT_SECRET;
 
 // @route     GET api/auth
 // @desc      Get logged in user
@@ -18,7 +20,7 @@ router.get('/', auth, async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send({
-      msg: 'Server error'
+      msg: 'Server error',
     });
   }
 });
@@ -30,24 +32,24 @@ router.post(
   '/',
   [
     check('email', 'Please include a valid email').isEmail(),
-    check('password', 'Password is required').exists()
+    check('password', 'Password is required').exists(),
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({
-        errors: errors.array()
+        errors: errors.array(),
       });
     }
     const { email, password } = req.body;
 
     try {
       let user = await User.findOne({
-        email
+        email,
       });
       if (!user) {
         return res.status(400).json({
-          msg: 'Invalid credentials'
+          msg: 'Invalid credentials',
         });
       }
 
@@ -55,26 +57,26 @@ router.post(
 
       if (!isMatch) {
         return res.status(400).json({
-          msg: 'Invalid credentials'
+          msg: 'Invalid credentials',
         });
       }
 
       const payload = {
         user: {
-          id: user.id
-        }
+          id: user.id,
+        },
       };
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        jwtSecret,
         {
-          expiresIn: 360000
+          expiresIn: 360000,
         },
         (err, token) => {
           if (err) throw err;
           res.json({
-            token
+            token,
           });
         }
       );
